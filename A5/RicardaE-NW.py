@@ -71,8 +71,8 @@ for item in range(length1):
         r+=1
     c+=1
 
-# Rekursion
-Rekursion = []
+# backtracking
+Track = []
 R=length2
 C=length1
 
@@ -82,33 +82,33 @@ while R!=0 or C!=0:
     gap2 = float(MTM[R][C-1])
     mmatch = float(MTM[R-1][C-1])
     if Start == mmatch + match:
-        Rekursion.extend('*')
+        Track.extend('*')
         R = R - 1
         C = C - 1
         continue
     if Start == mmatch + mismatch:
-        Rekursion.extend('/')
+        Track.extend('/')
         R = R - 1
         C = C - 1
         continue
     if Start == gap1 + gap:
-        Rekursion.extend('-')
+        Track.extend('-')
         R = R -1
         continue
     if Start == gap2 + gap:
-        Rekursion.extend('+')
+        Track.extend('+')
         C = C-1
         continue
 
 if R == 0:
     for i in range(C):
-        Rekursion.extend('+')
+        Track.extend('+')
 
 if C == 0:
     for i in range(R):
-        Rekursion.extend('-')
+        Track.extend('-')
 
-Rekursion.reverse()
+Track.reverse()
 
 
 #Print Alignment
@@ -124,7 +124,7 @@ z=0
 AlignedSeq1 = ''
 AlignedSeq2 = ''
 MatchLine=''
-for item in Rekursion:
+for item in Track:
     if item == '*' or item == '/':
         AlignedSeq1 = AlignedSeq1 + Sequence1[x]
         AlignedSeq2 = AlignedSeq2 + Sequence2[y]
